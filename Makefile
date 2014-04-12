@@ -33,3 +33,14 @@ endif
 bullet_engine:: all
 	erlc -o examples/bullet_engine examples/bullet_engine/*.erl
 	cd examples/bullet_engine && ./start.sh
+
+hello::
+	erlc -o examples/hello_sdl examples/hello_sdl/*.erl
+	cd examples/hello_sdl && ./start.sh
+
+clean::
+	@rm -f *.swp
+	@rm -f c_src/env.mk
+	@rm -rf ebin/
+	@rm -f examples/*/*.beam
+	@echo clean
