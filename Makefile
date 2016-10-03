@@ -22,7 +22,7 @@ SDL2_LIBS = $(filter-out $(SDL2_LIBS_FILTER_OUT),$(shell sdl2-config --static-li
 
 CFLAGS += $(shell sdl2-config --cflags)
 # @todo -undefined dynamic_lookup on OSX?
-LDFLAGS += -undefined dynamic_lookup $(SDL2_LIBS) -lSDL2_image
+LDFLAGS += -undefined dynamic_lookup $(SDL2_LIBS) -lSDL2_image -lSDL2_ttf
 
 include erlang.mk
 
@@ -37,6 +37,10 @@ bullet_engine:: all
 hello_sdl:: all
 	erlc -o examples/hello_sdl examples/hello_sdl/*.erl
 	cd examples/hello_sdl && ./start.sh
+
+hello_sdl_text:: all
+	erlc -o examples/hello_sdl_text examples/hello_sdl_text/*.erl
+	cd examples/hello_sdl_text && ./start.sh
 
 clean::
 	@rm -f *.swp
